@@ -1,0 +1,22 @@
+name: DeploymentPipeline
+
+on: 
+  push: 
+    branches: [main]
+jobs:
+  deploy: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.5.1
+      - name: Install packages
+        run: npm install 
+      - name: Build
+        run: npm run build && rm -rf docs && mv build docs
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4.16.0
+        with: 
+          commit_message: Push Build
+      
