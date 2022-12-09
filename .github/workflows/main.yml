@@ -14,4 +14,4 @@ jobs:
       - name: Install Packages
         run: npm install
       - name: Build
-        run: react-scripts build && rm -rf docs && mv build docs
+        run: npm run build && rm -rf docs && mv build docs
