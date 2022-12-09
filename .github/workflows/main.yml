@@ -7,5 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps: 
-      - name: Deploy
-        run: echo "hey"
+      - name: Install Packages
+        run: npm ci
+      - name: Build
+        run: react-scripts build && rm -rf docs && mv build docs
