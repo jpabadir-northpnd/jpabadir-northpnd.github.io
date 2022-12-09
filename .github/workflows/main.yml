@@ -7,7 +7,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps: 
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.5.1
       - name: Install Packages
-        run: npm ci
+        run: npm install
       - name: Build
-        run: react-scripts build && rm -rf docs && mv build docs
+        run: npm run build && rm -rf docs && mv build docs
