@@ -15,6 +15,8 @@ jobs:
         run: npm install 
       - name: Build
         run: npm run build && rm -rf docs && mv build docs
+      - name: Update Version
+        run: echo "$((`cat version.txt` + 1))" > version.txt; cp version.txt docs
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v4.16.0
         with: 
